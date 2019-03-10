@@ -8,9 +8,16 @@
         const WINS  = new Map([["rock", "paper"],
                                ["paper", "scissors"],
                                ["scissors", "rock"]]);
+
+        const NUM_WINS = 5;
         
         let playerScore   = 0;
         let computerScore = 0;
+
+        function startMessage() {
+            document.getElementById("message").innerHTML = `Rock, paper scissors: first to ${NUM_WINS} points wins.`;
+            displayScores();
+        }
 
         function play(playerSelection) {
             
@@ -27,6 +34,20 @@
 
             displayScores();
 
+            if (playerScore >= NUM_WINS) {
+                document.getElementById("message").innerHTML = "Congrats, you win!";
+                resetScores();
+            }
+            else if (computerScore >= NUM_WINS) {
+                document.getElementById("message").innerHTML = "Looks like you've lost this one :(";
+                resetScores();
+            }
+
+        }
+
+        function resetScores() {
+            playerScore = 0;
+            computerScore = 0;
         }
 
         function displayScores() {
@@ -71,7 +92,7 @@
 
     </head>
 
-    <body onload="displayScores()">
+    <body onload="startMessage()">
 
         <h1>Rock, Paper, Scissors!</h1>
 
