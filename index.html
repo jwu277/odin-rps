@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+
+    <script>
+
+        const MOVES = ["rock", "paper", "scissors"];
+        const WINS  = new Map([["rock", "paper"],
+                               ["paper", "scissors"],
+                               ["scissors", "rock"]]);
+
+        function computerPlay() {
+            return MOVES[Math.floor(Math.random() * 3)];
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            return playRoundLowercase(playerSelection.toLowerCase(), computerSelection.toLowerCase());
+        }
+
+        function playRoundLowercase(playerSelection, computerSelection) {
+
+            if (playerSelection === computerSelection) {
+                return `You Tie! You both played ${playerSelection}.`;
+            }
+
+            return (WINS.get(computerSelection) === playerSelection) ?
+                `You Win! ${playerSelection} beats ${computerSelection}.` :
+                `You Lose! ${computerSelection} beats ${playerSelection}.`;
+            
+        }
+
+
+    </script>
+
+</html>
