@@ -1,0 +1,60 @@
+h1 {
+
+    text-align: center;
+
+    font-family: Futura, Helvetica, sans-serif;
+    font-size: 60px;
+
+    margin-top: 40px;
+    margin-bottom: 70px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.score {
+
+    text-align: center;
+
+    font-family: Consolas, monospace;
+    font-size: 28px;
+
+    margin: 20px auto;
+
+}
+
+#moves {
+    text-align: center;
+}
+
+img {
+
+    width: 200px;
+    height: 200px;
+
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 60px;
+    margin-right: 60px;
+
+    opacity: 0.7;
+
+}
+
+img:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+img:active {
+    opacity: 1;
+}
+
+#message {
+
+    text-align: center;
+
+    font-family: Consolas, monospace;
+    font-size: 16px;
+
+}

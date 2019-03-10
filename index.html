@@ -8,6 +8,31 @@
         const WINS  = new Map([["rock", "paper"],
                                ["paper", "scissors"],
                                ["scissors", "rock"]]);
+        
+        let playerScore   = 0;
+        let computerScore = 0;
+
+        function play(playerSelection) {
+            
+            let result = playRound(playerSelection, computerPlay());
+
+            switch (result) {
+                case -1:
+                    computerScore++;
+                    break;
+                case 1:
+                    playerScore++;
+                    break;
+            }
+
+            displayScores();
+
+        }
+
+        function displayScores() {
+            document.getElementById("player-score").innerHTML = "Player: " + playerScore;
+            document.getElementById("computer-score").innerHTML = "Computer: " + computerScore;
+        }
 
         function computerPlay() {
             return MOVES[Math.floor(Math.random() * 3)];
@@ -20,16 +45,47 @@
         function playRoundLowercase(playerSelection, computerSelection) {
 
             if (playerSelection === computerSelection) {
-                return `You Tie! You both played ${playerSelection}.`;
+                document.getElementById("message").innerHTML = `You tie: you both played ${playerSelection}.`;
+                return 0;
             }
-
-            return (WINS.get(computerSelection) === playerSelection) ?
-                `You Win! ${playerSelection} beats ${computerSelection}.` :
-                `You Lose! ${computerSelection} beats ${playerSelection}.`;
+            else if (WINS.get(computerSelection) === playerSelection) {
+                document.getElementById("message").innerHTML = `You win: ${playerSelection} beats ${computerSelection}.`;
+                return 1;
+            }
+            else {
+                document.getElementById("message").innerHTML = `You lose: ${computerSelection} beats ${playerSelection}.`;
+                return -1;
+            }
             
         }
 
 
     </script>
+
+    <head>
+
+        <link href="reset.css" type="text/css" rel="stylesheet">
+        <link href="style.css" type="text/css" rel="stylesheet">
+
+        <title>Rock Paper Scissors</title>
+
+    </head>
+
+    <body onload="displayScores()">
+
+        <h1>Rock, Paper, Scissors!</h1>
+
+        <div class="score" id="player-score"></div>
+        <div class="score" id="computer-score"></div>
+
+        <div id="moves">
+            <img src="rock.png" onclick="play('rock')">
+            <img src="paper.png" onclick="play('paper')">
+            <img src="scissors.png" onclick="play('scissors')">
+        </div>
+
+        <div id="message"></div>
+
+    </body>
 
 </html>
